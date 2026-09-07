@@ -1,0 +1,59 @@
+---
+description: PREIshare project rules for AI coding agents
+alwaysApply: true
+---
+
+# PREIshare — agent rules
+
+## Project identity
+
+PREIshare helps people make better real-estate decisions by turning property and market data into clear intelligence.
+This repository is a **single-package** TanStack Start app at the repo root (see `docs/onboarding/repo-map.md`)—not an `apps/` + `packages/` monorepo.
+Prefer existing patterns in-repo over greenfield frameworks. New contributors join the shipping loop safely; they do not rewrite the product on day one.
+
+## Stack (do not substitute)
+
+- Language: TypeScript
+- App framework: TanStack Start + React (also Vite, TanStack Router, Tailwind in this tree)
+- Backend/data (product stack named in orientation): Supabase, PostgreSQL, pgvector
+  - Note: `docs/onboarding/repo-map.md` currently marks Supabase/SQL migration folders as **not found**—do not invent `supabase/` paths or a `src/lib/supabase.ts` file unless the human explicitly tasks it and the file exists or is requested
+- Collaboration: Git + GitHub pull requests from a personal fork to the team upstream (`EdTechForLearning/PREIShare-org-repo`)
+
+## Where to work (new contributors)
+
+- Safe first surfaces (from repo-map): `docs/onboarding/`, `README.md`, and other docs-only onboarding files
+- Read before edit: `docs/onboarding/repo-map.md`, `docs/onboarding/team-orientation-notes.md`, `docs/onboarding/setup-log.md`
+- App code (only when explicitly tasked): prefer small, scoped edits near existing files under `src/routes/` and `src/components/`; match neighbors
+- Avoid unless explicitly tasked: auth, billing, database migrations, CI secrets, large dependency upgrades, `package-lock.json`, `vite.config.ts`, `tsconfig.json`, `tsr.config.json`, and hand-edits to `src/routeTree.gen.ts`
+
+## How to change code
+
+- Prefer the smallest diff that completes the requested task
+- Match existing naming, file layout, and TypeScript style in neighboring files
+- Do not drive-by refactor unrelated modules
+- Do not add new libraries unless the human explicitly asks and justifies them
+- Do not invent npm scripts or folder names that are not listed in `docs/onboarding/repo-map.md`
+- Known package scripts (names only): `dev`, `generate-routes`, `build`, `preview`
+
+## Secrets and safety
+
+- Never commit `.env`, API keys, tokens, or connection strings
+- Never print secrets into docs, rules, or chat logs
+- If a change needs configuration, document the variable **name** only (for example `SUPABASE_URL` or `VITE_*`), never a real value
+- Do not paste secrets into agents; do not accept agent output you cannot explain
+
+## Agent workflow
+
+- Restate the goal and list files you will touch before editing
+- Work in small cycles: understand → plan → prompt → review → refine
+- Implement in small steps; stop for verification after each logical unit
+- When unsure about PREIshare structure, consult `docs/onboarding/` rather than inventing paths
+- First-PR spirit from orientation: scoped, isolated on a feature branch, described, reviewable, verified, aligned
+
+## Out of scope defaults
+
+- No rewriting the entire app “for best practices” unprompted
+- No large refactors, dependency upgrades, or database schema changes unless tasked
+- No “while I was here” unrelated edits that enlarge review risk
+- No changing product requirements silently—flag product questions to the human
+- No pushing directly to the team upstream repo; contribute via fork + pull request
