@@ -4,4 +4,4 @@ People who have completed PREIshare engineering onboarding and landed a first co
 
 | Name | GitHub | Role | Onboarded |
 | --- | --- | --- | --- |
-| Nate Nelson | natenelson2 | Onboarding engineer | 2026-09-09 |
+| Nate Nelson | [natenelson2](https://github.com/natenelson2) | Onboarding engineer | 2026-09-09 |
