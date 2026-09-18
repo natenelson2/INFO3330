@@ -1,10 +1,11 @@
 /**
- * Core PREIshare investor listing — scalars, unions, and nested address/financials.
- * Contacts and ownership nested types are added in later steps.
+ * Core PREIshare investor listing — composed domain types for PREIshare.
  */
 import type { Address } from "./address";
 import type { FinancialSummary } from "./financial-summary";
+import type { InvestorContact } from "./investor-contact";
 import type { ListingStatus } from "./listing-status";
+import type { Ownership } from "./ownership";
 import type { PropertyType } from "./property-type";
 
 export interface InvestorListing {
@@ -31,6 +32,19 @@ export interface InvestorListing {
    * and related figures are not yet set (draft listings).
    */
   financialSummary?: FinancialSummary;
+
+  /** One or more people associated with this listing. */
+  contacts: InvestorContact[];
+
+  /**
+   * Must match InvestorContact.id of one entry in `contacts`.
+   * TypeScript cannot fully enforce "id exists in array" alone;
+   * we still type it as string so callers pass an id, not a loose object.
+   */
+  primaryContactId: string;
+
+  /** Ownership description for the asset on this listing. */
+  ownership: Ownership;
 
   /** ISO-8601 datetime string when the listing was first created. */
   createdAt: string;
