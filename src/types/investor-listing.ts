@@ -1,7 +1,9 @@
 /**
- * Core PREIshare investor listing — scalars plus status/property-type unions.
- * Nested types (address, financials, contacts, ownership) are added in later steps.
+ * Core PREIshare investor listing — scalars, unions, and nested address/financials.
+ * Contacts and ownership nested types are added in later steps.
  */
+import type { Address } from "./address";
+import type { FinancialSummary } from "./financial-summary";
 import type { ListingStatus } from "./listing-status";
 import type { PropertyType } from "./property-type";
 
@@ -21,11 +23,14 @@ export interface InvestorListing {
   /** Asset class from the closed PropertyType set. */
   propertyType: PropertyType;
 
+  /** Physical location; required on every listing record. */
+  address: Address;
+
   /**
-   * Asking price in whole US dollars (no currency symbol).
-   * Example: 450000 means $450,000.
+   * Nested financial metrics. Optional early in the deal when price
+   * and related figures are not yet set (draft listings).
    */
-  askingPrice: number;
+  financialSummary?: FinancialSummary;
 
   /** ISO-8601 datetime string when the listing was first created. */
   createdAt: string;
