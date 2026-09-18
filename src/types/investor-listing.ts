@@ -1,25 +1,30 @@
 /**
- * Core PREIshare investor listing — composed domain types for PREIshare.
+ * Core PREIshare investor listing — discriminated on ListingStatus.
+ * Sold listings require closedAt; open statuses do not.
  */
 import type { Address } from "./address";
 import type { FinancialSummary } from "./financial-summary";
 import type { InvestorContact } from "./investor-contact";
-import type { ListingStatus } from "./listing-status";
+import type {
+  ClosedListingStatus,
+  OpenListingStatus,
+} from "./listing-status";
 import type { Ownership } from "./ownership";
 import type { PropertyType } from "./property-type";
 
-export interface InvestorListing {
+/**
+ * Shared listing fields. Identity timestamps are readonly so callers
+ * treat them as system-owned after create.
+ */
+interface InvestorListingBase {
   /** Stable unique id for this listing (assigned by the system). */
-  id: string;
+  readonly id: string;
 
   /** Short public headline shown in search results and cards. */
   title: string;
 
   /** Longer plain-text description of the investment opportunity. */
   summary: string;
-
-  /** Lifecycle state from the closed ListingStatus set. */
-  status: ListingStatus;
 
   /** Asset class from the closed PropertyType set. */
   propertyType: PropertyType;
@@ -47,8 +52,27 @@ export interface InvestorListing {
   ownership: Ownership;
 
   /** ISO-8601 datetime string when the listing was first created. */
-  createdAt: string;
+  readonly createdAt: string;
 
   /** ISO-8601 datetime string when the listing was last updated. */
-  updatedAt: string;
+  readonly updatedAt: string;
 }
+
+/** Listing that is still open — no closedAt on this branch. */
+export interface OpenInvestorListing extends InvestorListingBase {
+  status: OpenListingStatus;
+}
+
+/** Sold/closed listing — closedAt is required on this branch only. */
+export interface SoldInvestorListing extends InvestorListingBase {
+  status: ClosedListingStatus;
+
+  /** ISO-8601 datetime when the listing was marked sold/closed. */
+  closedAt: string;
+}
+
+/**
+ * Discriminated union on `status` (ListingStatus literals).
+ * Narrow with `listing.status === "sold"` to access closedAt safely.
+ */
+export type InvestorListing = OpenInvestorListing | SoldInvestorListing;
