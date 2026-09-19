@@ -4,7 +4,7 @@ export type {
   OpenInvestorListing,
   SoldInvestorListing,
 } from "./investor-listing";
-export type { InvestorContact } from "./investor-contact";
+export type { InvestorContact, ContactRole } from "./investor-contact";
 export type { Ownership } from "./ownership";
 export type { Address } from "./address";
 export type { FinancialSummary } from "./financial-summary";
