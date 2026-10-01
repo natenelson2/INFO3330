@@ -6,10 +6,10 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "vite dev --port 43123",
+    "dev": "vite dev --config app.config.ts --port 43123",
     "generate-routes": "tsr generate",
-    "build": "vite build",
-    "preview": "vite preview",
+    "build": "vite build --config app.config.ts",
+    "preview": "vite preview --config app.config.ts --port 43123",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
