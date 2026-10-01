@@ -14,7 +14,7 @@ function DashboardHomePage() {
         Demo shell — all figures are placeholders
       </p>
 
-      <div className="dashboard-home__stats">
+      <div className="dashboard-home__stats dash-card-grid">
         <StatsCard
           label="Total portfolio value"
           value="$300,000"
@@ -28,7 +28,7 @@ function DashboardHomePage() {
         />
       </div>
 
-      <div className="dashboard-home__panels">
+      <div className="dashboard-home__panels dash-card-grid">
         <PortfolioSummary totalLabel="$300,000" />
         <RecentActivity />
       </div>

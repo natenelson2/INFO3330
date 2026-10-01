@@ -29,11 +29,13 @@ a {
   color: #1d4e89;
 }
 
+/* Landing page (outside AppShell) */
 body > main {
   width: min(42rem, calc(100% - 2rem));
   margin: 4rem auto;
 }
 
+/* Dashboard shell */
 .app-shell {
   display: flex;
   min-height: 100vh;
@@ -124,15 +126,7 @@ body > main {
   margin: 0;
 }
 
-@media (max-width: 720px) {
-  .app-shell {
-    flex-direction: column;
-  }
-
-  .dashboard-sidebar {
-    width: auto;
-  }
-}
+/* Mobile stack / collapse is owned by src/styles/dashboard.css (max-width: 767px). */
 
 /* Dashboard home widgets (mock data) */
 .sample-data-banner {
@@ -145,9 +139,6 @@ body > main {
 }
 
 .dashboard-home__stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
   margin-bottom: 1.25rem;
 }
 
@@ -181,12 +172,6 @@ body > main {
   margin: 0.35rem 0 0;
   font-size: 0.85rem;
   color: #64748b;
-}
-
-.dashboard-home__panels {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
 }
 
 .portfolio-summary,
@@ -268,11 +253,6 @@ body > main {
 }
 
 @media (max-width: 900px) {
-  .dashboard-home__stats,
-  .dashboard-home__panels {
-    grid-template-columns: 1fr;
-  }
-
   .portfolio-summary__row {
     grid-template-columns: 1fr;
   }
@@ -393,3 +373,5 @@ body > main {
     grid-template-columns: 1fr;
   }
 }
+
+

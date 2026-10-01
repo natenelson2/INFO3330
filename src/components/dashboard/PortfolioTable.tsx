@@ -68,7 +68,7 @@ export function PortfolioTable({
           Sample data — placeholders only, not live balances
         </p>
       ) : null}
-      <div className="table-wrap">
+      <div className="table-wrap dash-table-wrap">
         <table>
           <thead>
             <tr>

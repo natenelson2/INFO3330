@@ -1,8 +1,13 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import { dashboardNavItems } from './navConfig'
 
+type NavItemsProps = {
+  /** Fired when a nav link is clicked (used to close the mobile drawer). */
+  onNavigate?: () => void
+}
+
 /** Renders nav links from navConfig and marks the active route. */
-export function NavItems() {
+export function NavItems({ onNavigate }: NavItemsProps) {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   })
@@ -27,7 +32,9 @@ export function NavItems() {
               <Link
                 to={item.path}
                 className={isActive ? 'nav-link nav-link-active' : 'nav-link'}
+                activeOptions={{ exact: true }}
                 aria-current={isActive ? 'page' : undefined}
+                onClick={onNavigate}
               >
                 {item.label}
               </Link>

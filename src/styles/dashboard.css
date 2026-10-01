@@ -1,0 +1,199 @@
+/* src/styles/dashboard.css
+   Shared responsive + accessibility polish for the PREIshare investor shell.
+   Loaded from src/routes/__root.tsx alongside styles.css.
+*/
+
+:root {
+  --dash-sidebar-width: 16rem;
+  --dash-header-height: 3.5rem;
+  --dash-gap: 1rem;
+  --dash-radius: 0.5rem;
+  --dash-focus: #1d4ed8;
+  --dash-touch-min: 44px;
+}
+
+/* Page landmarks rely on semantic regions in AppShell; this supports layout */
+.dash-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.dash-sidebar {
+  width: var(--dash-sidebar-width);
+  flex-shrink: 0;
+}
+
+.dash-main {
+  flex: 1;
+  min-width: 0; /* prevents wide tables from blowing out the flex row */
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-header {
+  min-height: var(--dash-header-height);
+  display: flex;
+  align-items: center;
+  gap: var(--dash-gap);
+  padding: 0.75rem 1rem;
+}
+
+.dash-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--dash-gap);
+}
+
+/* Card grids: 1 col mobile → multi-col when space allows */
+.dash-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--dash-gap);
+}
+
+@media (min-width: 640px) {
+  .dash-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .dash-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tables/lists: allow horizontal scroll instead of page overflow */
+.dash-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Touch-friendly interactive targets */
+.dash-nav a,
+.dash-nav button,
+.dash-header button {
+  min-height: var(--dash-touch-min);
+  min-width: var(--dash-touch-min);
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.dash-nav a,
+.dash-nav button {
+  display: inline-flex;
+}
+
+/* Keyboard focus — do not remove outlines without a replacement */
+.dash-nav a:focus-visible,
+.dash-nav button:focus-visible,
+.dash-header a:focus-visible,
+.dash-header button:focus-visible,
+.dash-content a:focus-visible,
+.dash-content button:focus-visible {
+  outline: 2px solid var(--dash-focus);
+  outline-offset: 2px;
+}
+
+/* Menu toggle: desktop hidden; mobile visible */
+.dash-header .dash-menu-toggle {
+  display: none;
+  border: 1px solid #d6d3cd;
+  border-radius: var(--dash-radius);
+  background: #fff;
+  color: #14213d;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.dash-menu-toggle__icon {
+  display: inline-block;
+  width: 1.1rem;
+  height: 0.85rem;
+  position: relative;
+}
+
+.dash-menu-toggle__icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 1px;
+  position: absolute;
+  left: 0;
+}
+
+.dash-menu-toggle__icon span:nth-child(1) {
+  top: 0;
+}
+
+.dash-menu-toggle__icon span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dash-menu-toggle__icon span:nth-child(3) {
+  bottom: 0;
+}
+
+.dash-sidebar-backdrop {
+  display: none;
+}
+
+/* Narrow viewports: stack shell; sidebar becomes collapsible drawer pattern */
+@media (max-width: 767px) {
+  .dash-shell {
+    flex-direction: column;
+  }
+
+  .dash-header .dash-menu-toggle {
+    display: inline-flex;
+  }
+
+  .dash-sidebar {
+    width: 100%;
+    /* When closed, visually collapsed via .nav-open on AppShell */
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: max-height 0.2s ease, padding 0.2s ease;
+  }
+
+  .dash-shell.nav-open .dash-sidebar {
+    max-height: 80vh;
+    overflow: auto;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .dash-shell.nav-open .dash-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: rgba(20, 33, 61, 0.35);
+    cursor: pointer;
+  }
+
+  .dash-shell.nav-open .dash-sidebar {
+    position: relative;
+    z-index: 6;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .dash-sidebar,
+  .dash-shell * {
+    transition: none !important;
+  }
+}
