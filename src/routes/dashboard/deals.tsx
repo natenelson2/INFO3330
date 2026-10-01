@@ -6,9 +6,9 @@ export const Route = createFileRoute('/dashboard/deals')({
 
 function DealsPage() {
   return (
-    <main>
-      <h1>Deals</h1>
+    <section aria-labelledby="deals-heading">
+      <h2 id="deals-heading">Deals</h2>
       <p>Placeholder for open and past investment deals.</p>
-    </main>
+    </section>
   )
 }

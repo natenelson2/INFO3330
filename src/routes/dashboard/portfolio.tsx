@@ -6,9 +6,9 @@ export const Route = createFileRoute('/dashboard/portfolio')({
 
 function PortfolioPage() {
   return (
-    <main>
-      <h1>Portfolio</h1>
+    <section aria-labelledby="portfolio-heading">
+      <h2 id="portfolio-heading">Portfolio</h2>
       <p>Placeholder for holdings and performance.</p>
-    </main>
+    </section>
   )
 }

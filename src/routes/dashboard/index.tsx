@@ -6,9 +6,9 @@ export const Route = createFileRoute('/dashboard/')({
 
 function DashboardHomePage() {
   return (
-    <main>
-      <h1>Dashboard overview</h1>
+    <section aria-labelledby="dashboard-home-heading">
+      <h2 id="dashboard-home-heading">Dashboard overview</h2>
       <p>Placeholder for portfolio value, open deals, and recent activity.</p>
-    </main>
+    </section>
   )
 }

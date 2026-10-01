@@ -6,9 +6,9 @@ export const Route = createFileRoute('/dashboard/profile')({
 
 function ProfilePage() {
   return (
-    <main>
-      <h1>Profile</h1>
+    <section aria-labelledby="profile-heading">
+      <h2 id="profile-heading">Profile</h2>
       <p>Placeholder for investor profile details.</p>
-    </main>
+    </section>
   )
 }
