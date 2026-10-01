@@ -278,3 +278,118 @@ body > main {
   }
 }
 
+/* Portfolio / Deals / Profile panels */
+.dashboard-panel {
+  background: #fff;
+  border: 1px solid #d6d3cd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.dashboard-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.empty-state {
+  margin: 0;
+  color: #64748b;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrap th,
+.table-wrap td {
+  text-align: left;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid #f0eee9;
+  font-size: 0.95rem;
+}
+
+.table-wrap th {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.deals-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.deal-card {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.85rem;
+  border: 1px solid #e7e5e0;
+  border-radius: 0.45rem;
+}
+
+.deal-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.deal-card p {
+  margin: 0;
+}
+
+.status {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-open {
+  color: #166534;
+}
+
+.status-closing-soon {
+  color: #9a3412;
+}
+
+.status-waitlist {
+  color: #1d4e89;
+}
+
+.profile-card dl {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.profile-card dl > div {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #f0eee9;
+}
+
+.profile-card dt {
+  margin: 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.profile-card dd {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .deal-card,
+  .profile-card dl > div {
+    grid-template-columns: 1fr;
+  }
+}
