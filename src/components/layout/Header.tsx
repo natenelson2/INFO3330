@@ -1,18 +1,22 @@
 import type { ReactNode } from 'react'
+import { useRouterState } from '@tanstack/react-router'
+import { getPageTitle } from './navConfig'
 
 type HeaderProps = {
   title?: string
   children?: ReactNode
 }
 
-/** Top bar: page title + optional actions / user slot. */
-export function Header({
-  title = 'Investor Dashboard',
-  children,
-}: HeaderProps) {
+/** Top bar: page title from navConfig + optional actions / user slot. */
+export function Header({ title, children }: HeaderProps) {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  })
+  const resolvedTitle = title ?? getPageTitle(pathname)
+
   return (
     <header className="dashboard-header">
-      <h1 className="header-title">{title}</h1>
+      <h1 className="header-title">{resolvedTitle}</h1>
       <div className="header-actions">{children}</div>
     </header>
   )
