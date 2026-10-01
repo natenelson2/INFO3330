@@ -1,7 +1,19 @@
+import { defineConfig } from 'vite'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import viteReact from '@vitejs/plugin-react'
+
 /**
- * TanStack Start app config (Sprint 3 scaffold checklist).
- * Runtime Vite plugins live in vite.config.ts.
+ * Shared Start + Vite config. TanStack Start is registered via the
+ * official Vite plugin so `npm run dev` (vite) serves the router app
+ * without a static index.html.
  */
-export default {
-  // Keep defaults from the official TanStack Start scaffold.
-}
+export default defineConfig({
+  resolve: { tsconfigPaths: true },
+  plugins: [
+    tanstackStart(),
+    viteReact(),
+  ],
+  server: {
+    port: 43123,
+  },
+})

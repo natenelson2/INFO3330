@@ -1,12 +1,2 @@
-import { defineConfig } from 'vite'
-
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-
-import viteReact from '@vitejs/plugin-react'
-
-const config = defineConfig({
-  resolve: { tsconfigPaths: true },
-  plugins: [tanstackStart(), viteReact()],
-})
-
-export default config
+// Vite entry: re-export the Start-aware config from app.config.ts
+export { default } from './app.config.ts'
