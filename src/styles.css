@@ -133,3 +133,148 @@ body > main {
     width: auto;
   }
 }
+
+/* Dashboard home widgets (mock data) */
+.sample-data-banner {
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.35rem;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.9rem;
+}
+
+.dashboard-home__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.stats-card {
+  background: #fff;
+  border: 1px solid #d6d3cd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.stats-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.stats-card__label {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.stats-card__value {
+  margin: 0.5rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #14213d;
+}
+
+.stats-card__hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.dashboard-home__panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.portfolio-summary,
+.recent-activity {
+  background: #fff;
+  border: 1px solid #d6d3cd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.portfolio-summary__header,
+.recent-activity__header {
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-summary__header h2,
+.recent-activity__header h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.portfolio-summary__total {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e7e5e0;
+}
+
+.portfolio-summary__total-value {
+  font-weight: 700;
+}
+
+.portfolio-summary__list,
+.recent-activity__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.portfolio-summary__row,
+.recent-activity__item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0eee9;
+}
+
+.portfolio-summary__row {
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.recent-activity__item {
+  grid-template-columns: 1fr auto;
+}
+
+.recent-activity__title,
+.portfolio-summary__name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.recent-activity__detail {
+  margin: 0.15rem 0 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.recent-activity__date,
+.portfolio-summary__allocation,
+.portfolio-summary__value {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard-home__stats,
+  .dashboard-home__panels {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-summary__row {
+    grid-template-columns: 1fr;
+  }
+}
+
