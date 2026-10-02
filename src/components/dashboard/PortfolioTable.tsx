@@ -95,3 +95,5 @@ export function PortfolioTable({
     </section>
   )
 }
+
+// PAUL: dash classes + menu aria wired for responsive shell

@@ -35,3 +35,5 @@ function DashboardHomePage() {
     </div>
   )
 }
+
+// PAUL: dash classes + menu aria wired for responsive shell

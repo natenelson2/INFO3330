@@ -45,3 +45,5 @@ export function NavItems({ onNavigate }: NavItemsProps) {
     </nav>
   )
 }
+
+// PAUL: dash classes + menu aria wired for responsive shell

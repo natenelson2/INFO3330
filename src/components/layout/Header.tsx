@@ -51,3 +51,5 @@ export function Header({
     </header>
   )
 }
+
+// PAUL: dash classes + menu aria wired for responsive shell

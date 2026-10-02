@@ -45,3 +45,5 @@ function RootDocument({ children }: { children: ReactNode }) {
     </html>
   )
 }
+
+// PAUL: dash classes + menu aria wired for responsive shell

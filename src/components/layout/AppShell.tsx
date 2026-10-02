@@ -49,3 +49,5 @@ export function AppShell({ children }: AppShellProps) {
     </div>
   )
 }
+
+// PAUL: dash classes + menu aria wired for responsive shell
